@@ -49,12 +49,32 @@ function start(houseHoldMembers, houseSize) {
 }
 
 function displayOutput() {
+    for (arr of cfpData) {
+        console.log(arr);
+        const output = document.getElementById("output");
+        const newP = document.createElement("p");
+        const pHouseMembers = document.createElement("p");
+        const pHouseScore = document.createElement("p");
+        const pHouseSize = document.createElement("p");
+        const pSizeScore = document.createElement("p");
+        newP.textContent = `Carbon Footprint total is ${arr[4]}`;
+        pHouseMembers.textContent = `Number of members in household: ${arr[0]}`;
+        pHouseScore.textContent = `Score for household members: ${arr[2]}`;
+        pHouseSize.textContent = `Home size is: ${arr[1]}`
+        pSizeScore.textContent = `Score for home size is: ${arr[3]}`
+        output.appendChild(newP);
+        output.appendChild(pHouseMembers);
+        output.appendChild(pHouseScore);
+        output.appendChild(pHouseSize);
+        output.appendChild(pSizeScore);
 
+        const br = document.createElement("p");
+        br.textContent = `--------------------------------------------`;
+        output.appendChild(br);
+    }
 }
 
 // Global Scope //
-
-console.log("-- global scope --");
 
 start(2, "apartment");
 start(5, "large house");
@@ -62,3 +82,5 @@ start(4, "medium house");
 start(3, "small house");
 start(1, "large house");
 start(1, "small house");
+
+displayOutput();
