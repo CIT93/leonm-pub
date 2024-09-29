@@ -1,6 +1,7 @@
 const TBL = document.getElementById("tab-data");
 
 function renderTblHeading() {
+    TBL.innerHTML = "";
     const table = document.createElement("table");
     const thead = document.createElement("thead");
     const tr = document.createElement("tr");
@@ -18,25 +19,40 @@ function renderTblHeading() {
 function renderTbl(data) {
     const table = renderTblHeading();
     const tbody = document.createElement("tbody");
-    const tr = document.createElement("tr");
-    const trTextArr = ["Leon", 2, "large", 20];
-    trTextArr.forEach(function (text) {
-        const td = document.createElement("td");
-        td.textContent = text;
-        tr.appendChild(td);
-        table.appendChild(tr);
+    data.forEach(function (data) {
+        const tr = document.createElement("tr");
+
+        const tdFirstName = document.createElement("td");
+        tdFirstName.textContent = data.cfpFirstName;
+        tr.appendChild(tdFirstName);
+
+        const tdHousehold = document.createElement("td");
+        tdHousehold.textContent = data.cfpHouseHold;
+        tr.appendChild(tdHousehold);
+
+        const tdHomeSize = document.createElement("td");
+        tdHomeSize.textContent = data.cfpHomeSize;
+        tr.appendChild(tdHomeSize);
+
+        const tdTotal = document.createElement("td");
+        tdTotal.textContent = data.cfpTotal;
+        tr.appendChild(tdTotal);
+
+        tbody.appendChild(tr);
+        table.appendChild(tbody);
+        
     })
-    const td = document.createElement("td");
-    const btnEdit = document.createElement("button");
-    btnEdit.textContent = "Edit";
-    const btnDelete = document.createElement("button");
-    btnDelete.textContent = "Delete";
-    td.appendChild(btnEdit);
-    td.appendChild(btnDelete);
-    tr.appendChild(td);
-    tbody.appendChild(tr);
     table.appendChild(tbody);
     TBL.appendChild(table);
+    // const td = document.createElement("td");
+    // const btnEdit = document.createElement("button");
+    // btnEdit.textContent = "Edit";
+    // const btnDelete = document.createElement("button");
+    // btnDelete.textContent = "Delete";
+    // td.appendChild(btnEdit);
+    // td.appendChild(btnDelete);
+    // tr.appendChild(td);
+    
     console.log(table);
 }
 
