@@ -53,10 +53,15 @@ function renderBody(data) {
 }
 
 function renderTbl(data) {
-    const table = renderTblHeading();
-    const tbody = renderBody(data);
-    table.appendChild(tbody);
-    TBL.appendChild(table);
+    if (Object.entries(data).length > 0) {
+        const table = renderTblHeading();
+        const tbody = renderBody(data);
+        table.appendChild(tbody);
+        TBL.appendChild(table);
+    }
+    else {
+        console.log("it worked");
+    }
 }
 
 export { renderTbl, renderTblHeading };
